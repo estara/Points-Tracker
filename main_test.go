@@ -21,11 +21,8 @@ func TestMain(m *testing.M) {
 }
 
 // Helper function to create a router during testing
-func getRouter(withTemplates bool) *gin.Engine {
+func getRouter() *gin.Engine {
 	router := gin.Default()
-	if withTemplates {
-		router.LoadHTMLGlob("templates/*")
-	}
 	return router
 }
 
@@ -46,7 +43,7 @@ func testHTTPResponse(t *testing.T, r *gin.Engine, req *http.Request, f func(w *
 // This function is used to store the main lists into the temporary one
 // for testing
 func saveLists() {
-	tmpTransactionList = transactionList
+	tmpTransactionList = getAllTransactions()
 }
 
 // This function is used to restore the main lists from the temporary one

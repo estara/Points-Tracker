@@ -3,22 +3,28 @@ package main
 import "time"
 
 type Transaction struct {
-	payer     string    `json:"payer"`
-	points    int       `json:"points"`
-	timestamp time.Time `json:"timestamp"`
+	Id        int       `json:"id"`
+	Payer     string    `json:"payer"`
+	Points    int       `json:"points"`
+	Timestamp time.Time `json:"timestamp"`
+	Used      int       `json:"used"`
 }
 
 type Request struct {
 	Points int `json:"points"`
 }
 
-var transactionList []Transaction
+type Result struct {
+	Payer  string `json:"payer"`
+	Points int    `json:"points"`
+}
+
+var transactionList = []Transaction{Id: 1, Payer: "foo", Points: 5, Timestamp: "2020-11-02T14:00:00Z", Used: 0}
 
 func getAllTransactions() []Transaction {
 	return transactionList
 }
 
-func addTransaction(transaction) string {
-	append(transactionList, transaction)
-	return "added"
+func addTransaction(entry Transaction) {
+	transactionList = append(transactionList, entry)
 }

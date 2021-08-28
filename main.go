@@ -8,7 +8,7 @@ func main() {
 	router := gin.Default()
 	router.GET("/balances", getBalances)
 	router.POST("/spend", spendPoints)
-	router.POST("/transactions", addTransaction)
+	router.POST("/transactions", newTransaction)
 	// store := cookie.NewStore([]byte("secret"))
 	// router.Use(sessions.Sessions("mysession", store))
 
